@@ -1,4 +1,4 @@
-package com.digwener.dto;
+package com.digwener.buyer;
 
 /**
  * DTO for person

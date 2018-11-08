@@ -1,4 +1,4 @@
-package com.digwener.http;
+package com.digwener.buyer;
 
 /**
  * interface representing a service which gets RAW string data from HTTP endpoint

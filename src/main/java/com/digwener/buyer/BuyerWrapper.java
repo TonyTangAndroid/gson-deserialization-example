@@ -1,7 +1,5 @@
-package com.digwener.api;
+package com.digwener.buyer;
 
-import com.digwener.dto.*;
-import com.digwener.http.*;
 import com.google.gson.*;
 
 public class BuyerWrapper {
@@ -14,9 +12,9 @@ public class BuyerWrapper {
         this.fooHttpService = fooHttpService;
     }
 
-    public BuyerResponse getResponse() {
+    public BuyerDto getResponse() {
         final String rawResponse = fooHttpService.getApiResponse();
-        return gson.fromJson(rawResponse, BuyerResponse.class);
+        return gson.fromJson(rawResponse, BuyerDto.class);
 
     }
 

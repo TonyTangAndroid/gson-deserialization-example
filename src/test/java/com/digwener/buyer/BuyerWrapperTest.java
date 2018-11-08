@@ -1,7 +1,4 @@
-package com.digwener.api;
-
-import com.digwener.dto.*;
-import com.digwener.http.*;
+package com.digwener.buyer;
 
 import org.apache.commons.io.*;
 import org.junit.*;
@@ -31,9 +28,9 @@ public class BuyerWrapperTest {
     public void shouldLoadBuyer() throws Exception {
         given(buyerHttpService.getApiResponse()).willReturn(getResource());
 
-        BuyerResponse buyerResponse = buyerWrapper.getResponse();
-        Buyer buyer = buyerResponse.getData();
-        assertNotNull(buyerResponse);
+        BuyerDto buyerDto = buyerWrapper.getResponse();
+        Buyer buyer = buyerDto.data;
+        assertNotNull(buyerDto);
         assertEquals(buyer.getId(), "430426999XX");
         assertEquals(buyer.getName(), "John");
         assertEquals(buyer.getSurname(), "Smith");
@@ -41,9 +38,7 @@ public class BuyerWrapperTest {
 
 
     private String getResource() throws Exception {
-        return IOUtils.toString(
-                this.getClass().getResourceAsStream("buyer.json"),
-                "UTF-8"
+        return IOUtils.toString(this.getClass().getResourceAsStream("buyer.json"), "UTF-8"
         );
     }
 
