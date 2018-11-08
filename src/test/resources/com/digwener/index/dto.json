@@ -1,7 +1,7 @@
 {
   "code": 0,
-  "msg": "success",
   "data": {
+    "data_id":"ABC",
     "item_list": [
       {
         "type": 406,
