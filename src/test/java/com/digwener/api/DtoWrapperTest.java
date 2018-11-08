@@ -1,16 +1,12 @@
 package com.digwener.api;
 
-import com.digwener.common.DataType;
-import com.digwener.dto.Department;
-import com.digwener.dto.FooResponse;
-import com.digwener.dto.Person;
-import com.digwener.http.FooHttpService;
+import com.digwener.common.*;
+import com.digwener.dto.*;
+import com.digwener.http.*;
 
-import org.apache.commons.io.IOUtils;
-import org.junit.Before;
-import org.junit.Test;
+import org.apache.commons.io.*;
+import org.junit.*;
 import org.mockito.*;
-import org.mockito.Mock;
 
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.*;
@@ -19,13 +15,13 @@ import static org.mockito.BDDMockito.*;
  * Test class which demonstrates deserialization
  * Created by aberezin on 24.04.2016.
  */
-public class FooWrapperTest {
+public class DtoWrapperTest {
 
     @Mock
-    private FooHttpService fooHttpService;
+    private DtoHttpService dtoHttpService;
 
     @InjectMocks
-    private FooWrapper fooWrapper;
+    private DtoWrapper dtoWrapper;
 
     @Before
     public void init() {
@@ -34,9 +30,9 @@ public class FooWrapperTest {
 
     @Test
     public void shouldLoadPerson() throws Exception {
-        given(fooHttpService.getApiResponse(DataType.PERSON)).willReturn(getResource("person.json"));
+        given(dtoHttpService.getApiResponse(DataType.PERSON)).willReturn(getResource("person.json"));
 
-        FooResponse<Person> person = fooWrapper.getResponse(DataType.PERSON, Person.class);
+        DtoResponse<Person> person = dtoWrapper.getResponse(DataType.PERSON, Person.class);
         Person data = person.getData();
         assertNotNull(person);
         assertEquals(data.getName(), "John");
@@ -45,9 +41,9 @@ public class FooWrapperTest {
 
     @Test
     public void shouldLoadDepartment() throws Exception {
-        given(fooHttpService.getApiResponse(DataType.DEPARTMENT)).willReturn(getResource("department.json"));
+        given(dtoHttpService.getApiResponse(DataType.DEPARTMENT)).willReturn(getResource("department.json"));
 
-        FooResponse<Department> department = fooWrapper.getResponse(DataType.DEPARTMENT, Department.class);
+        DtoResponse<Department> department = dtoWrapper.getResponse(DataType.DEPARTMENT, Department.class);
 
         assertNotNull(department);
         assertEquals(department.getData().getName(), "Agriculture");

@@ -1,0 +1,9 @@
+{
+  "status": "success",
+  "message": "Data was retrieved",
+  "data": {
+    "id" : "430426999XX",
+    "name" : "John",
+    "surname": "Smith"
+  }
+}
