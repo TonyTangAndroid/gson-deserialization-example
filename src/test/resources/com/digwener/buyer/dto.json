@@ -1,0 +1,26 @@
+{
+  "code": 0,
+  "msg": "success",
+  "data": {
+    "item_list": [
+      {
+        "type": 406,
+        "item_id": "10091@2880956625",
+        "data": {
+          "character_id": 10000,
+          "title": "White Shirt",
+          "description": "shirt"
+        }
+      },
+      {
+        "type": 408,
+        "item_id": "4068@2880956625",
+        "data": {
+          "product_id": 1323,
+          "product_name": "Kevin Space",
+          "description": "Kevin Space Bla"
+        }
+      }
+    ]
+  }
+}
