@@ -1,9 +1,10 @@
 package com.digwener.index;
 
-public class Item<T> {
+public class Item {
 
     public int type;
     public String item_id;
-    public T data;
+    public String data;
+
 
 }

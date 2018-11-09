@@ -17,12 +17,16 @@ public class IndexWrapperTest {
         MockitoAnnotations.initMocks(this);
     }
 
+
+    public Gson defautGson() {
+        return new GsonBuilder().registerTypeAdapter(Item.class, new ItemDeserializer()).create();
+    }
+
     @Test
     public void shouldLoadBuyer() throws Exception {
 
-
         String json = json();
-        CategoryDto actual = new Gson().fromJson(json, CategoryDto.class);
+        Dto actual = defautGson().fromJson(json, Dto.class);
 
         Truth.assertThat(actual).isNotNull();
         Truth.assertThat(actual.code).isEqualTo(10);
@@ -37,9 +41,16 @@ public class IndexWrapperTest {
             Truth.assertThat(item.type).isEqualTo(406);
             Truth.assertThat(item.item_id).isEqualTo("10091@2880956625");
             Object data = item.data;
-            Truth.assertThat(data).isEqualTo(10000);
+            Truth.assertThat(data).isEqualTo("{\"character_id\":10000,\"title\":\"White Shirt\",\"description\":\"shirt\"}");
         }
 
+        {
+            Item item = list.get(1);
+            Truth.assertThat(item.type).isEqualTo(408);
+            Truth.assertThat(item.item_id).isEqualTo("4068@2880956625");
+            Object data = item.data;
+            Truth.assertThat(data).isEqualTo("{\"product_id\":1323,\"product_name\":\"Kevin Space\",\"description\":\"Kevin Space Bla\"}");
+        }
 
     }
 
